@@ -21,7 +21,8 @@ Link will be provided as soon as it gets published
 # Screenshots
 <div style={{
     display:"flex",
-    flexFlow:"row wrap"
+    flexFlow:"row wrap",
+     justifyContent:"space-between"
      }}>
 <img src="https://drive.google.com/uc?id=1yZ18xgLUjqPC0em2G2Bwd4KYBcfcjIqs" />
 <img src="https://drive.google.com/uc?id=137UMiZl2j0wpluzU051c9iOH2Y2drEyJ" />
