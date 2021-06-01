@@ -1,0 +1,56 @@
+.main{
+    display: flex;
+    flex-wrap: wrap;
+    height:150px;
+    max-width: 450px;
+    border: 2px solid #181818;
+    
+    box-sizing: border-box;
+    box-shadow: 2px 2.5px 13.5px rgba(0, 0, 0, 0.2);
+
+    border-radius: 13.6165px;
+    margin-top: 3%;
+    margin-left: 5%;
+    
+    background: #181818;
+    
+}
+
+
+.img1{
+    align-self: center;
+    width: 10px;
+}
+
+.img1 Img{
+    width: 40px;
+    margin-left: 20px;
+}
+
+
+.sub{
+    width: 350px;
+    display: flex;
+    flex-flow: column wrap;
+    margin-left:18%;
+    align-self: center;
+}
+
+.sub h1{
+    font-size: 19px;
+    color:rgba(255, 255, 255, 0.89)
+}
+
+.sub p{
+    font-size: 15px;
+    
+    color:#B3b3b3
+}
+
+.sub h1{
+    color:#6a5acd
+}
+
+.sub a :hover{
+    color: #B3b3b3;
+}

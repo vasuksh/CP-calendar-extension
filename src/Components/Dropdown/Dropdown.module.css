@@ -1,0 +1,31 @@
+.list{
+color:#6a5acd;
+margin-top:4%;
+cursor:pointer;
+background-color:#181818;
+border:2px solid #181818;
+padding-top:15px;
+padding-left:10px;
+padding-right:10px;
+border-radius:13.6165px;
+font-size: 16px;
+}
+
+.list2{
+    color:#6a5acd;
+    margin-top:4%;
+    cursor:pointer;
+    background-color:#181818;
+    border:2px solid #6a5acd;
+    padding-top:15px;
+    padding-left:10px;
+    padding-right:10px;
+    border-radius:13.6165px;
+    font-size: 16px;
+}
+
+
+.navbar li:hover{
+border:2px solid #6a5acd;
+}
+
