@@ -13,6 +13,11 @@ const startTime=props.startTime.split("T")
 
 const StartingDate=new Date(startTime[0]+" "+startTime[1]+" GMT").toLocaleString()
 const date=StartingDate.split(",")
+
+const x=date[0].split("/")
+
+const formattedStartingDate=x[1]+"/"+x[0]+"/"+x[2]
+
  return (
         <div className={classes.main}>
             <div className={classes.img1}>
@@ -27,7 +32,7 @@ const date=StartingDate.split(",")
             
             <h1>{props.event}</h1> 
             
-            <p>Starting Date : { date[0]} <br/>
+            <p>Starting Date : { formattedStartingDate} <br/>
              Starting Time : {date[1]}<br/>
              Duration : {contestDuration} </p>
            </a>

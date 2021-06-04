@@ -4,7 +4,7 @@ import List  from './Components/List/List'
 import Dropdown1 from './Components/Dropdown/Dropdown'
 import links from './resources.json'
 import Spinner from './Components/Spinner/Spinner'
-import secondsToDhms from './Helper/Helper'
+
 
 // dropdown items array
 const optionsAr = [{
@@ -22,6 +22,7 @@ links.map((link)=>{
 const set = new Set();
 let date=""
 
+
 class App extends Component {
   state = {
     contests: [],
@@ -31,10 +32,8 @@ class App extends Component {
     search: '',
     currentItem:"today",
     loading:true,
-    API:null
+    Network:true
   };
-
-  
 
   componentDidMount() {
 
@@ -42,51 +41,48 @@ class App extends Component {
     const d = this.state.Day > "9" ? this.state.Day : "0" + this.state.Day;
     date = this.state.Year + "-" + m + "-" + d + "T00:00:00";
 
-    // for production
-    // axios.post("https://o08vs2mete.execute-api.ap-south-1.amazonaws.com/default/apiSecureKeys")
-    // .then((response)=>{
-    //   this.setState({API:response.data.message},()=>{
-    //     axios
-    //     .get(
-    //       "https://clist.by/api/v2/contest/?username=vasuKsh&api_key="+this.state.API+"&limit=250&end__gt=" +
-    //         date +
-    //         "&order_by=start"
-    //     )
-    //     .then((response) => {
-    //       this.setState({ contests: response.data.objects ,
-    //         loading:false
-    //       });
-    //     });
-    //   })
-    // })
+    const Link="https://shrouded-shore-92504.herokuapp.com/https://clist.by/api/v2/contest/?username=vasuKsh&api_key=ba837437c15539752557a401791572a0493f7ee9&limit=200&end__gt="+date+"&order_by=start"
 
-
-    //for development
-     axios.get(
-          "https://clist.by/api/v2/contest/?username=vasuKsh&api_key="+process.env.REACT_APP_CLIST+"&limit=250&end__gt=" +
-            date +
-            "&order_by=start"
-        )
+     axios.get(Link)
         .then((response) => {
           this.setState({ contests: response.data.objects ,
             loading:false
           });
+        }).catch((e)=>{
+          this.setState({ 
+            loading:false,
+            Network:false
+          })
         }); 
-  
   
   }
 
   render() {
 
+    if(!this.state.Network)
+    {
+      return (
+        <div>
+          <h1 style={{
+              color:"#6a5acd",
+              marginTop:"25%",
+              textAlign:"center"
+          }}> No Network !  <br/> Try Again</h1>
+        </div>
+    )
+    }
 
-   this.state.contests.map(({resource}) => {
+
+   this.state.contests.map(({resource,duration}) => {
 
       const res = JSON.stringify(resource).slice(1, -1);
 
-      if (!set.has(res)) {
+      
+      if (!set.has(res) && duration<=86400) {
+      
         set.add(res);
         const obj = {
-          key: res,
+          key: res, 
           value: res,
           text: res,
           image: {
@@ -109,38 +105,38 @@ class App extends Component {
     };
 
  
-    let filtered = this.state.contests.filter(({resource,start,duration})=>{
+    let filtered = this.state.contests.filter(({resource,start,end,duration})=>{
 
-       const res=JSON.stringify(resource)
+       resource=JSON.stringify(resource)
+       
        const st="\""+"ALL"+"\""
-       const temp=JSON.stringify(start).split("T")
-       const currdate=temp[0].substr(1)
+
+       const lim=86400;
+
+       if(duration>lim) return
+
+       if(this.state.search===st) return resource
+
+       start=JSON.stringify(start).split("T")
+
+       const currdate=start[0].substr(1)
+
        const c=date.split("T")
-
-       duration=secondsToDhms(duration).split(",")
-
-      //  var days=null
-      //  if(duration[0].includes("days"))
-      //  {
-      //    const p=duration[0].split(" ")
-      //    days=p[0]
-      // }
-
-      //filtering by date
-      var x=Date.parse(c[0])
-      var y=Date.parse(currdate)
-
-        if(this.state.currentItem==="today")
-        {
-         return ((res.includes(this.state.search) || this.state.search===st) && x===y)
-        }
       
-        return (this.state.search!==st)?res.includes(this.state.search) && y>x :y>x 
+        end=end.split("T")
+      
+        //filtering by date
+        var x=Date.parse(c[0])
+        var y=Date.parse(currdate)
+
+        if(this.state.currentItem==="today"  )
+        return (resource.includes(this.state.search)  && y===x)
+        
+        return resource.includes(this.state.search) && y>x
 
     })
 
     const todayHandler=()=>{
-      
       this.setState({
               currentItem:"today"                
       })
