@@ -17,27 +17,25 @@ const Dropdown1=(props)=>{
           className={classes.navbar}
           >
 
-        <li 
+  
+        <li  
         style={
           {
             marginTop:"4%",
            backgroundColor:"#181818",
-           border:"2px solid #181818",
            paddingBottom:"15px",
            paddingLeft:"10px",
            paddingRight:"10px",
+           boxSizing:"fit",
            borderRadius:"13.6165px",
-           border:"2px solid #6a5acd"
-          }
-        }
-        >
-
-         <span style={{color:"#6a5acd"}}>
+          }}>
+         <span style={{color:"#6a5acd"}}>         
           <br />
           <Dropdown
             inline
-            options={props.options}
+            // placeholder={"Select Platform"}
             defaultValue={props.defaultValue}
+            options={props.options}
             onChange={props.onChange}
             scrolling={true}
             
@@ -45,15 +43,15 @@ const Dropdown1=(props)=>{
           <br />
         </span>
         </li>
-      
+   
          
         <li 
-          className={(props.currentItem=="today")?classes.list2:classes.list}
+          className={(props.currentItem==="today")?classes.list2:classes.list}
           onClick={props.todayHandler}
         >Today</li>
         
         <li  
-           className={(props.currentItem=="upcoming")?classes.list2:classes.list}
+           className={(props.currentItem==="upcoming")?classes.list2:classes.list}
           onClick={props.upcomingHandler}
           >Upcoming</li>
       </nav>

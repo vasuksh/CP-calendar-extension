@@ -25,7 +25,7 @@ font-size: 16px;
 }
 
 
-.navbar li:hover{
-border:2px solid #6a5acd;
+.list:hover{
+border: 2px solid #6a5acd;
 }
 
