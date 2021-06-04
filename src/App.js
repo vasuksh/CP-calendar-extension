@@ -115,8 +115,6 @@ class App extends Component {
 
        if(duration>lim) return
 
-       if(this.state.search===st) return resource
-
        start=JSON.stringify(start).split("T")
 
        const currdate=start[0].substr(1)
@@ -130,9 +128,9 @@ class App extends Component {
         var y=Date.parse(currdate)
 
         if(this.state.currentItem==="today"  )
-        return (resource.includes(this.state.search)  && y===x)
+        return (this.state.search===st)? (y==x) :(resource.includes(this.state.search)  && y===x)
         
-        return resource.includes(this.state.search) && y>x
+        return (resource.includes(this.state.search) || this.state.search===st) && y>x
 
     })
 
