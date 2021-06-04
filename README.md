@@ -10,7 +10,7 @@ Get competitive programming contest schedule details at one place </li>
 
 ## API INFO
 This extension used Clist API.<br/>
-Get your API key from [clist.by](https://clist.by/api/v2/doc/) and change .env variables<br/>
+Get your API key from [clist.by](https://clist.by/api/v2/doc/) and change .env variable (REACT_APP_CLIST)<br/>
 
 ## Chrome Webstore 
 The extension is under review  <br/>
@@ -22,5 +22,5 @@ Link will be provided as soon as it gets published
     flexFlow:"row wrap",
      justifyContent:"space-between"
      }}>
-<img src="https://drive.google.com/uc?id=1IIHXEtff_HOmoGdOkj4ZhVy5WDxYT8uO" />
+<img src="https://drive.google.com/uc?id=1m6ldrxX_6-PLuaKL_qvEBTC73A63MyP7" />
   </div>
