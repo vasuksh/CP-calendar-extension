@@ -1,3 +1,11 @@
+<div style={{
+    display:"flex",
+    flexFlow:"row wrap",
+     justifyContent:"space-between"
+     }}>
+<img src="https://drive.google.com/uc?id=1m6ldrxX_6-PLuaKL_qvEBTC73A63MyP7" />
+  </div>
+
 # Description
 <li> 
 Get competitive programming contest schedule details at one place </li>
@@ -16,11 +24,4 @@ Get your API key from [clist.by](https://clist.by/api/v2/doc/) and change .env v
 The extension is under review  <br/>
 Link will be provided as soon as it gets published
 
-# Video
-<div style={{
-    display:"flex",
-    flexFlow:"row wrap",
-     justifyContent:"space-between"
-     }}>
-<img src="https://drive.google.com/uc?id=1m6ldrxX_6-PLuaKL_qvEBTC73A63MyP7" />
-  </div>
+
