@@ -21,7 +21,8 @@ This extension uses Clist API.<br/>
 Get your API key from [clist.by](https://clist.by/api/v2/doc/) and change .env variable (REACT_APP_CLIST)<br/>
 
 ## Chrome Webstore 
-The extension is under review  <br/>
-Link will be provided as soon as it gets published
+Download now!
+Link - https://chrome.google.com/webstore/detail/cp-calendar/gnnibhojjocbjpkhhlphelmiiffodajj?hl=en-GB&authuser=0  <br/>
+
 
 
