@@ -1,45 +1,44 @@
-import React from 'react'
-import classes from './Contest.module.css'
-import secondsToDhms from '../../Helper/Helper'
+import React from "react";
+import classes from "./Contest.module.css";
+import secondsToDhms from "../../Helper/Helper";
 
+const Contest = (props) => {
+  const Link = "https://clist.by" + props.mp.get(props.name);
 
-const Contest=(props)=>{
+  const contestDuration = secondsToDhms(props.duration).slice(0, -2);
 
-const Link="https://clist.by"+props.mp.get(props.name)
+  const startTime = props.startTime.split("T");
 
-const contestDuration=secondsToDhms(props.duration).slice(0,-2)
+  const StartingDate = new Date(
+    startTime[0] + " " + startTime[1] + " GMT"
+  ).toLocaleString();
+  const date = StartingDate.split(",");
 
-const startTime=props.startTime.split("T")
+  const x = date[0].split("/");
 
-const StartingDate=new Date(startTime[0]+" "+startTime[1]+" GMT").toLocaleString()
-const date=StartingDate.split(",")
+  const formattedStartingDate = x[1] + "/" + x[0] + "/" + x[2];
 
-const x=date[0].split("/")
+  return (
+    <div className={classes.main}>
+      <div className={classes.img1}>
+        <a href={props.link} target="_blank" rel="noreferrer">
+          <img src={Link} />
+        </a>
+      </div>
+      <div className={classes.sub}>
+        <a href={props.link} target="_blank" rel="noreferrer">
+          <h1>{props.event}</h1>
 
-const formattedStartingDate=x[1]+"/"+x[0]+"/"+x[2]
+          <p>
+            Starting Date : {formattedStartingDate} <br />
+            Starting Time : {date[1]}
+            <br />
+            Duration : {contestDuration}{" "}
+          </p>
+        </a>
+      </div>
+    </div>
+  );
+};
 
- return (
-        <div className={classes.main}>
-            <div className={classes.img1}>
-            <a href={props.link} target="_blank"  rel="noreferrer" >
-            <img 
-                src={Link}
-            />
-            </a>
-            </div>
-            <div className={classes.sub} >
-            <a href={props.link} target="_blank"  rel="noreferrer" >
-            
-            <h1>{props.event}</h1> 
-            
-            <p>Starting Date : { formattedStartingDate} <br/>
-             Starting Time : {date[1]}<br/>
-             Duration : {contestDuration} </p>
-           </a>
-            </div>
-        </div>
-    )
-
-}
-
-export default Contest
+export default Contest;
