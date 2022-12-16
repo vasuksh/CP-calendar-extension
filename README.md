@@ -1,3 +1,11 @@
+<div style={{
+    display:"flex",
+    flexFlow:"row wrap",
+     justifyContent:"space-between"
+     }}>
+<img src="https://drive.google.com/uc?id=1m6ldrxX_6-PLuaKL_qvEBTC73A63MyP7" />
+  </div>
+
 # Description
 <li> 
 Get competitive programming contest schedule details at one place </li>
@@ -9,18 +17,12 @@ Get competitive programming contest schedule details at one place </li>
 <li> Blazing fast! </li>
 
 ## API INFO
-This extension used Clist API.<br/>
-Get your API key from [clist.by](https://clist.by/api/v2/doc/) and change .env variables<br/>
+This extension uses Clist API.<br/>
+Get your API key from [clist.by](https://clist.by/api/v2/doc/) and change .env variable (REACT_APP_CLIST)<br/>
 
 ## Chrome Webstore 
-The extension is under review  <br/>
-Link will be provided as soon as it gets published
+Download now!
+Link - https://chrome.google.com/webstore/detail/cp-calendar/gnnibhojjocbjpkhhlphelmiiffodajj?hl=en-GB&authuser=0  <br/>
 
-# Video
-<div style={{
-    display:"flex",
-    flexFlow:"row wrap",
-     justifyContent:"space-between"
-     }}>
-<img src="https://drive.google.com/uc?id=1IIHXEtff_HOmoGdOkj4ZhVy5WDxYT8uO" />
-  </div>
+
+
