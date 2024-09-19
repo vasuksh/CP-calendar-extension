@@ -30,6 +30,7 @@ class App extends Component {
       loading: true,
       Network: true,
       resourceRes: [],
+      image_map:new Map(),
     };
   }
 
@@ -57,14 +58,27 @@ class App extends Component {
 
     const link="https://fastidious-moonbeam-eb613e.netlify.app/.netlify/functions/app/resources"
       
-    axios.get(link).then((res) => {
+    axios.get(link,{params:{limit:500},}).then((res) => {
+      // console.log(res)
       this.setState({
         resourceRes: res.data.objects,
         contests: response.data.objects,
-        loading: false
+        // loading: false,
+      });
+      const mp2 = new Map();
+      res.data.objects.map((link) => {
+        // console.log(link.name, link.icon)
+        mp2.set(link.name, link.icon);
+      });
+      
+      this.setState({
+        resourceRes: res.data.objects,
+        contests: this.state.contests, // preserve previous state
+        loading: false,
+        image_map:mp2, // save the map in state
       });
 
-      console.log(res)
+      // console.log(this.state)
     });
       })
       .catch((e) => {
@@ -73,17 +87,22 @@ class App extends Component {
           Network: false,
         });
 
-        console.log(e)
+        // console.log(e)
       });
 
-    
   }
 
   render() {
-    this.state.resourceRes.map((link) => {
-      mp.set(link.name, link.icon);
-    });
+    // this.state.resourceRes.map((link) => {
+    //   mp.set(link.name, link.icon);
+    // });
 
+    if (this.state.loading ){
+      return (
+      <Spinner />
+    )}
+
+    // console.log(this.state.image_map)
     if (!this.state.Network) {
       return (
         <div>
@@ -103,9 +122,11 @@ class App extends Component {
 
     this.state.contests.map(({ duration, resource }) => {
       const res = JSON.stringify(resource).slice(1, -1);
-
-      if (!set.has(res) && duration <= 86400) {
-        const link = "https://clist.by" + mp.get(res);
+      
+      if (!set.has(res) && duration <= 86400 ) {
+        // const link = "https://clist.by" + mp.get(res);
+        const link = (this.state.image_map.has(res))? "https://clist.by" + this.state.image_map.get(res):"/default.png"
+        
         set.add(res);
         const obj = {
           key: res,
@@ -120,6 +141,8 @@ class App extends Component {
         optionsAr.push(obj);
       }
     });
+
+    // console.log(optionsAr)
 
     const handler = (e, { value }) => {
       const res = '"' + value + '"';
@@ -195,7 +218,7 @@ class App extends Component {
         {this.state.loading ? (
           <Spinner />
         ) : (
-          <List mp={mp} filteredAr={filtered} />
+          <List mp={this.state.image_map} filteredAr={filtered} />
         )}
       </div>
     );
