@@ -1,8 +1,8 @@
 {
   "name":"CP Calendar",
   "description":"Chrome extension for checking Competitive programming contests schedule organized by various platforms.",
-  "manifest_version": 2,
-  "version": "1.0.1",
+  "manifest_version": 3,
+  "version": "3.0.2",
   "browser_action": {
     "default_popup": "index.html",
     "default_title": "Open the popup"
